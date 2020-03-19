@@ -3,7 +3,7 @@ import javafx.scene.canvas.Canvas
 import javafx.scene.paint.Color
 import java.util.*
 
-class Tertis(private val canvas: Canvas) : TimerTask() {
+class Tetris(private val canvas: Canvas) : TimerTask() {
     private val board = TetrisBoard(boardColor = Color.BLACK, blockSize = BLOCK_SIZE)
     private var currentTermino = Optional.empty<Tetromino>()
     private var gameOver = false

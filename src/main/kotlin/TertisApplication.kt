@@ -9,7 +9,7 @@ import java.util.*
 class TertisApplication : Application() {
     override fun start(primaryStage: Stage) {
         val canvas = Canvas(640.0, 480.0)
-        val tertis = Tertis(canvas)
+        val tertis = Tetris(canvas)
 
         val pane = StackPane(canvas)
         val scene = Scene(pane)
