@@ -61,7 +61,10 @@ open class BaseTetromino(
     }
 
     override fun rotateRight() {
-        rotationHandler.rotateRight(shape)
+        val newShape = rotationHandler.rotateRight(shape)
+        if (canMoveDown(0, newShape)){
+            shape =  newShape
+        }
     }
 
     override fun rotateLeft() {
