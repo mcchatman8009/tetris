@@ -1,7 +1,6 @@
 import javafx.scene.canvas.Canvas
 import javafx.scene.paint.Color
 import java.util.*
-import kotlin.collections.ArrayList
 
 class TetrisBoard(private val boardColor: Color, private val blockSize: Int) {
     private val board = Array(BOARD_ROWS) {
@@ -26,14 +25,13 @@ class TetrisBoard(private val boardColor: Color, private val blockSize: Int) {
                     ctx.fill = boardColor
                 }
 
-                ctx.fillRect(x, y, BLOCK_SIZE.toDouble(), BLOCK_SIZE.toDouble())
+                ctx.fillRect(x, y, blockSize.toDouble(), blockSize.toDouble())
             }
 
         }
     }
 
     companion object {
-        private const val BLOCK_SIZE = 10
         private const val BOARD_COLUMNS = 10
         private const val BOARD_ROWS = 16
     }

@@ -5,7 +5,6 @@ import javafx.scene.layout.StackPane
 import javafx.stage.Stage
 import java.util.*
 
-// 10  x 40
 class TertisApplication : Application() {
     override fun start(primaryStage: Stage) {
         val canvas = Canvas(640.0, 480.0)
@@ -19,7 +18,7 @@ class TertisApplication : Application() {
 
         primaryStage.show()
         val timer = Timer()
-        timer.scheduleAtFixedRate(tertis, 100, 1000 / 10)
+        timer.scheduleAtFixedRate(tertis, 100, 1000 / 5)
 
     }
 }
