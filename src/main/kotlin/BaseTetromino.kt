@@ -17,7 +17,7 @@ open class BaseTetromino(
     protected var shape: ArrayList<ArrayList<Boolean>> = arrayListOf(arrayListOf())
 
     override fun moveLeft() {
-        if (movementHandler.canMoveLeft(currentCol + 1, currentRow, shape, board)) {
+        if (movementHandler.canMoveLeft(currentCol - 1, currentRow, shape, board)) {
             currentCol--
         }
     }

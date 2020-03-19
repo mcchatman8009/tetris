@@ -15,9 +15,12 @@ class TertisApplication : Application() {
         val scene = Scene(pane)
         primaryStage.scene = scene
 
+        scene.onKeyPressed = KeyboardEventListener(tertis)
+
         primaryStage.show()
         val timer = Timer()
-        timer.scheduleAtFixedRate(tertis, 100, 1000 / 1)
+        timer.scheduleAtFixedRate(tertis, 100, 1000 / 10)
+
     }
 }
 

@@ -1,3 +1,4 @@
+import javafx.application.Platform
 import javafx.scene.canvas.Canvas
 import javafx.scene.paint.Color
 import java.util.*
@@ -15,11 +16,38 @@ class Tertis(private val canvas: Canvas) : TimerTask() {
         render()
     }
 
+    fun moveCurrentTetrominoLeft() {
+        currentTermino.map { it.moveLeft() }
+    }
+
+    fun moveCurrentTetrominoRight() {
+        currentTermino.map { it.moveRight() }
+    }
+
+    fun moveCurrentTetrominoDown() {
+        currentTermino.map { it.moveRight() }
+    }
+
+    fun rotateRight() {
+        currentTermino.map { it.rotateRight() }
+    }
+
+    fun rotateLeft() {
+        currentTermino.map { it.rotateLeft() }
+    }
 
     private fun spawnNewTeromino(): Tetromino {
         val iTetromino = LTetromino(0, board, Color.RED)
 
         return iTetromino
+    }
+
+    private fun render() {
+
+        Platform.runLater {
+            renderBoard()
+            renderCurrentTermino()
+        }
     }
 
     private fun update() {
@@ -43,14 +71,8 @@ class Tertis(private val canvas: Canvas) : TimerTask() {
     }
 
     private fun renderCurrentTermino() {
-        currentTermino.map { it.render(canvas, BLOCK_SIZE.toInt()) }
+        currentTermino.map { it.render(canvas, BLOCK_SIZE) }
     }
-
-    private fun render() {
-        renderBoard()
-        renderCurrentTermino()
-    }
-
 
     private fun renderBoard() {
         val ctx = canvas.graphicsContext2D
