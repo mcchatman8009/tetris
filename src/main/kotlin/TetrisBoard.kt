@@ -32,7 +32,7 @@ class TetrisBoard(private val boardColor: Color, private val blockSize: Int) {
     }
 
     companion object {
-        private const val BOARD_COLUMNS = 10
-        private const val BOARD_ROWS = 16
+        const val BOARD_COLUMNS = 10
+        const val BOARD_ROWS = 18
     }
 }

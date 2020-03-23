@@ -2,9 +2,21 @@ import javafx.application.Platform
 import javafx.scene.canvas.Canvas
 import javafx.scene.paint.Color
 import java.util.*
+import kotlin.random.Random
 
 class Tetris(private val canvas: Canvas) : TimerTask() {
     private val board = TetrisBoard(boardColor = Color.BLACK, blockSize = BLOCK_SIZE)
+    private val tetrominoFactory: List<(Int) -> Tetromino> = listOf(
+        { col -> ITetromino(col, board.getBoardArray(), Color.RED)},
+        { col -> JTetromino(col, board.getBoardArray(), Color.BLUE)},
+        { col -> LTetromino(col, board.getBoardArray(), Color.GREEN)},
+        { col -> OTetromino(col, board.getBoardArray(), Color.YELLOW)},
+        { col -> STetromino(col, board.getBoardArray(), Color.BROWN)},
+        { col -> TTetromino(col, board.getBoardArray(), Color.PURPLE)},
+        { col -> ZTetromino(col, board.getBoardArray(), Color.ORANGE)}
+    )
+    private val numTetrominoTypes = tetrominoFactory.size
+
     private var currentTermino = Optional.empty<Tetromino>()
     private var gameOver = false
 
@@ -35,9 +47,10 @@ class Tetris(private val canvas: Canvas) : TimerTask() {
     }
 
     private fun spawnNewTeromino(): Tetromino {
-        val iTetromino = LTetromino(0, board.getBoardArray(), Color.RED)
+        val i = Random.nextInt(until = numTetrominoTypes)
+        val col = Random.nextInt(until = TetrisBoard.BOARD_COLUMNS - 4)
 
-        return iTetromino
+        return tetrominoFactory[i](col)
     }
 
     private fun render() {
